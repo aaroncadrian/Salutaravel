@@ -18,7 +18,7 @@ abstract class SalutaravelRule implements Rule
      */
     public function __construct()
     {
-        $this->options = collect(config(str_replace_first('?', $this->configKey(), 'salutaravel.?')));
+        $this->options = collect(config($this->configKey()));
 
     }
 
@@ -41,7 +41,7 @@ abstract class SalutaravelRule implements Rule
      */
     public function message()
     {
-        return str_replace_array('?', [$this->salutationName(), $this->optionsList()], 'The ? you selected is invalid.  Please select from the following: ?');
+        return str_replace_array('?', [$this->salutation(), $this->optionsList()], 'The ? you selected is invalid.  Please select from the following: ?');
     }
 
     public function optionsList()
@@ -53,6 +53,6 @@ abstract class SalutaravelRule implements Rule
 
     protected function configKey()
     {
-        return str_plural($this->salutation());
+        return str_replace_first('?', str_plural($this->salutation()), 'salutaravel.?');
     }
 }
