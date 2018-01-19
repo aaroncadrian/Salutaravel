@@ -42,4 +42,19 @@ return [
         'I',
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Rules
+    |--------------------------------------------------------------------------
+    |
+    | This array associates the parameter name of a rule with its rule class.
+    | @see SalutaravelServiceProvider::bootValidationExtensions()
+    |
+    */
+
+    'rules' => [
+        'title' => \AaronAdrian\Salutaravel\Rules\ValidTitle::class,
+        'suffix' => \AaronAdrian\Salutaravel\Rules\ValidSuffix::class,
+    ]
+
 ];
