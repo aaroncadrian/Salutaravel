@@ -12,7 +12,7 @@ class SalutaravelServiceProvider extends ServiceProvider
 
     public function boot()
     {
-
+        $this->bootValidationExtensions();
     }
 
     public function register()
@@ -31,14 +31,14 @@ class SalutaravelServiceProvider extends ServiceProvider
 
             if($parameters->isEmpty())
             {
-                throw new SalutaravelException(str_replace_first('?', $rules->keys()->map(function($item) { return '"' . $item . '"'; })->implode(', '),'Salutation validation rule must contain one of the following parameters: ?'));
+                throw new SalutaravelException(str_replace_first('?', $rules->keys()->map(function($item) { return '"' . $item . '"'; })->implode(', '), 'Salutation validation rule must contain one of the following parameters: ?'));
             }
 
             $ruleParameter = $parameters->first();
 
             if(!$rules->keys()->contains($ruleParameter))
             {
-                throw new SalutaravelException(str_replace_first('?', $ruleParameter, 'The parameter "?" is not valid for the Salutation validation rule'));
+                throw new SalutaravelException(str_replace_first('?', $ruleParameter, 'The parameter "?" is not valid for the Salutation validation rule.'));
             }
 
             return (new $rules[$ruleParameter])->passes($attribute, $value);
