@@ -13,12 +13,20 @@ class SalutaravelServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->bootValidationExtensions();
+        $this->publishes([
+            $this->getPackageConfigPath() => config_path('salutaravel.php')
+        ], 'salutaravel_config');
     }
 
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/salutaravel.php', 'salutaravel');
+        $this->mergeConfigFrom($this->getPackageConfigPath(), 'salutaravel');
 
+    }
+
+    protected function getPackageConfigPath()
+    {
+        return __DIR__.'/../config/salutaravel.php';
     }
 
     protected function bootValidationExtensions()
