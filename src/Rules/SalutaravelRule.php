@@ -64,7 +64,7 @@ abstract class SalutaravelRule implements Rule
      *
      * @return string
      */
-    public function optionsList()
+    protected function optionsList()
     {
         return $this->options->map(function($option){
             return '"' . $option . '"';
