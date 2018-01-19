@@ -4,7 +4,6 @@ namespace AaronAdrian\Salutaravel;
 
 
 use AaronAdrian\Salutaravel\Exceptions\SalutaravelException;
-use AaronAdrian\Salutaravel\Rules\ValidTitle;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 
@@ -42,7 +41,7 @@ class SalutaravelServiceProvider extends ServiceProvider
                 throw new SalutaravelException(str_replace_first('?', $ruleParameter, 'The parameter "?" is not valid for the Salutation validation rule'));
             }
 
-            return (new ($rules[$ruleParameter]))->passes($attribute, $value);
+            return (new $rules[$ruleParameter])->passes($attribute, $value);
         });
     }
 
