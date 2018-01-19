@@ -1,0 +1,25 @@
+{
+    "name": "aaroncadrian/salutaravel",
+    "description": "A Laravel package for managing and validating salutations such as titles and suffixes.",
+    "require-dev": {
+        "orchestra/testbench": "~3.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aaron Adrian",
+            "email": "aaroncadrian@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "AaronAdrian\\Salutaravel\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AaronAdrian\\Salutaravel\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev"
+}
