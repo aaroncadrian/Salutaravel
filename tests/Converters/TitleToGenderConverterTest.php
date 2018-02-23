@@ -9,6 +9,7 @@ class TitleToGenderConverterTest extends TestCase
     public function convert_title_to_gender()
     {
         $this->assertEquals('M', title_to_gender('Mr.'));
+        $this->assertEquals('F', title_to_gender('Mrs.'));
     }
 
 }
