@@ -4,36 +4,24 @@ namespace AaronAdrian\Salutaravel\Rules;
 
 
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Collection;
 
 abstract class SalutaravelRule implements Rule
 {
     /**
-     * Stores a collection containing the salutation options from the config file.
-     *
-     * @var \Illuminate\Support\Collection
-     */
-    protected $options;
-
-    /**
      * Return the name of the salutation.
-     * The plural of this name will be used build the config key
-     *
-     * @see SalutaravelRule::configKey()
      *
      * @return string
      */
     abstract protected function salutation();
 
-    /**
-     * Create a new rule instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->options = collect(config($this->configKey()));
 
-    }
+    /**
+     * Return collection that will be searched for the given value.
+     *
+     * @return Collection
+     */
+    abstract protected function options();
 
     /**
      * Determine if the value is one of the options from the collection.
@@ -46,7 +34,7 @@ abstract class SalutaravelRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        return $this->options->contains($value);
+        return $this->options()->contains($value);
     }
 
     /**
@@ -56,7 +44,7 @@ abstract class SalutaravelRule implements Rule
      */
     public function message()
     {
-        return str_replace_array('?', [$this->salutation(), $this->optionsList()], 'The ? you selected is invalid.  Please select from the following: ?');
+        return str_replace_array('?', [$this->salutation(), $this->options_list()], 'The ? you selected is invalid.  Please select from the following: ?');
     }
 
     /**
@@ -64,23 +52,10 @@ abstract class SalutaravelRule implements Rule
      *
      * @return string
      */
-    protected function optionsList()
+    protected function options_list()
     {
-        return $this->options->map(function($option){
+        return $this->options()->map(function($option){
             return '"' . $option . '"';
         })->implode(', ');
-    }
-
-    /**
-     * Get the config key of the options array.
-     *
-     * Salutation name comes from plural of value returned from salutation method.
-     * @see SalutaravelRule::salutation()
-     *
-     * @return string
-     */
-    protected function configKey()
-    {
-        return str_replace_first('?', str_plural($this->salutation()), 'salutaravel.?');
     }
 }
