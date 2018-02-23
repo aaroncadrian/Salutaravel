@@ -15,3 +15,11 @@ if(!function_exists('get_suffixes'))
         return collect(config('salutaravel.suffixes'));
     }
 }
+
+if(!function_exists('title_to_gender'))
+{
+    function title_to_gender($title)
+    {
+        return (new \AaronAdrian\Salutaravel\Services\TitleToGenderConverter)->handle($title);
+    }
+}
