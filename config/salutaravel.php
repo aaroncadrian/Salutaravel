@@ -12,15 +12,15 @@ return [
     */
 
     'titles' => [
-        'Mr.',
-        'Ms.',
-        'Mrs.',
+        'Mr.' => 'M',
+        'Ms.' => 'F',
+        'Mrs.' => 'F',
 
         /*
          * Beware that if you are deriving genders from the title that a user submits,
          * "Dr." should be removed from this array, for this title does not represent a specific gender.
          */
-        'Dr.',
+        'Dr.' => 'M',
     ],
 
     /*
