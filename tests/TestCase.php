@@ -21,7 +21,7 @@ class TestCase extends OrchestraTestCase
 
     protected function getInvalidTitleMessage()
     {
-        return 'The title you selected is invalid.  Please select from the following: "Mr.", "Ms.", "Mrs.", "Dr."';
+        return 'The title you selected is invalid.  Please select from the following: "Mr.", "Ms.", "Mrs."';
     }
 
 }
