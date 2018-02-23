@@ -2,9 +2,7 @@
 
 namespace AaronAdrian\Salutaravel\Services;
 
-use AaronAdrian\Salutaravel\Contracts\TitleToGenderConverter as Contract;
-
-class TitleToGenderConverter implements Contract
+class TitleToGenderConverter
 {
     public function handle($title)
     {
