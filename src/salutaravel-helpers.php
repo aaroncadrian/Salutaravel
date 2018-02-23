@@ -1,11 +1,17 @@
 <?php
 
-function get_titles()
+if(!function_exists('get_titles'))
 {
-    return collect(config('salutaravel.titles'))->keys();
+    function get_titles()
+    {
+        return collect(config('salutaravel.titles'))->keys();
+    }
 }
 
-function get_suffixes()
+if(!function_exists('get_suffixes'))
 {
-    return collect(config('salutaravel.suffixes'));
+    function get_suffixes()
+    {
+        return collect(config('salutaravel.suffixes'));
+    }
 }
