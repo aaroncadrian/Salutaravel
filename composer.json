@@ -18,6 +18,9 @@
         }
     ],
     "autoload": {
+        "files": [
+            "src/salutaravel-helpers.php"
+        ],
         "psr-4": {
             "AaronAdrian\\Salutaravel\\": "src/"
         }
