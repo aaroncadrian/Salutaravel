@@ -1,31 +1,14 @@
 <?php
 
-namespace AaronAdrian\Salutaravel\Tests\Rules;
+namespace AaronAdrian\Salutaravel\Tests;
 
 
-use AaronAdrian\Salutaravel\Rules\ValidTitle;
-use AaronAdrian\Salutaravel\Tests\TestCase;
-
-class ValidTitleRuleTest extends TestCase
+class TitleToGenderConverterTest extends TestCase
 {
-    public function rule()
+    /** @test */
+    public function convert_title_to_gender()
     {
-        return new ValidTitle;
-    }
-
-    public function testValidTitleRule()
-    {
-        $this->assertTrue($this->rule()->passes('title', 'Mrs.'));
-    }
-
-    public function testInvalidTitleDoesNotPass()
-    {
-        $this->assertFalse($this->rule()->passes('title', 'Mrss.'));
-    }
-
-    public function testValidTitleRuleMessage()
-    {
-        $this->assertEquals($this->rule()->message(), $this->getInvalidTitleMessage());
+        $this->assertEquals('M', title_to_gender('Mr.'));
     }
 
 }
