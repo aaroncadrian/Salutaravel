@@ -33,6 +33,7 @@ return [
     */
 
     'suffixes' => [
+        'None',
         'Sr.',
         'Jr.',
         'V',
