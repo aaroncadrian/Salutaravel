@@ -8,27 +8,24 @@ use AaronAdrian\Salutaravel\Tests\TestCase;
 
 class ValidTitleRuleTest extends TestCase
 {
-    public function getRule()
+    public function rule()
     {
         return new ValidTitle;
     }
 
     public function testValidTitleRule()
     {
-        $rule = $this->getRule();
-        $this->assertTrue($rule->passes('title', 'Mrs.'));
+        $this->assertTrue($this->rule()->passes('title', 'Mrs.'));
     }
 
     public function testInvalidTitleDoesNotPass()
     {
-        $rule = $this->getRule();
-        $this->assertFalse($rule->passes('title', 'Mrss.'));
+        $this->assertFalse($this->rule()->passes('title', 'Mrss.'));
     }
 
     public function testValidTitleRuleMessage()
     {
-        $rule = $this->getRule();
-        $this->assertEquals($rule->message(), $this->getInvalidTitleMessage());
+        $this->assertEquals($this->rule()->message(), $this->getInvalidTitleMessage());
     }
 
 }
